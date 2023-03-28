@@ -8,6 +8,12 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "nuxt": "^3.3.1"
+    "@mdi/font": "^7.1.96",
+    "@mdi/js": "^7.1.96",
+    "nuxt": "^3.3.1",
+    "sass": "^1.59.3"
+  },
+  "dependencies": {
+    "vuetify": "^3.1.10"
   }
 }
