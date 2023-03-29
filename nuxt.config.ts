@@ -9,6 +9,9 @@ export default defineNuxtConfig({
       "process.env.DEBUG": false,
     },
   },
+  modules: [
+    "@nuxt/content"
+  ],
   app: {
     head: {
       charset: 'utf-16',

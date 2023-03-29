@@ -48,7 +48,7 @@
               </v-row>
 
               <!-- 「過去のメンバー」ボタン -->
-              <v-btn class="my-6" height="50" color="primary" href="/alumni">過去のメンバー
+              <v-btn class="my-6 mt-10" height="50" color="primary" href="/alumni">過去のメンバー
                 <v-icon class="ml-1">mdi-arrow-right</v-icon>
               </v-btn>
 

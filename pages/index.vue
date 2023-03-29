@@ -50,14 +50,18 @@
               <v-card-title class="py-6 text-primary" style="font-weight: bold;">NEWS</v-card-title>
                           
               <!-- ニュースアイテム -->
-              <v-row v-for="(news) in newsList" :key="news.title">
-                <v-col cols="12" class="py-0">
-                  <v-card flat href="#">
-                    <v-card-subtitle class="pt-2 text-primary" style="font-weight: bold; opacity: 1;">{{ news.date }}</v-card-subtitle>
-                    <v-card-title class="text-subtitle-1">{{ news.title }}</v-card-title>
-                  </v-card>
-                </v-col>
-              </v-row>
+              <ContentList v-slot="{ list }">
+                <v-row v-for="article in props.max === -1 ? list.slice().reverse() : limitedContent" :key="article._path">
+                  <v-col cols="12" class="py-0">
+                    <v-card flat :href="article._path">
+                      <v-card-subtitle class="pt-2 text-primary" style="font-weight: bold; opacity: 1;">
+                        {{ getDate(article._path) }}
+                      </v-card-subtitle>
+                      <v-card-title class="news-title text-subtitle-1">{{ article.body.children[0].props.id }}</v-card-title>
+                    </v-card>
+                  </v-col>
+                </v-row>
+              </ContentList>
 
               <!-- 「もっと見る」ボタン -->
               <v-btn class="my-6" height="50" color="primary" href="/news">もっと見る
@@ -75,6 +79,7 @@
 
 
 <script setup lang="ts">
+import { queryContent } from '#imports';
 
 /* head設定 */
 useHead({
@@ -89,13 +94,27 @@ const mainContentList = [
   { title: 'アクセス', icon: 'mdi-map-marker', url: '/access' },
 ];
 
-/* ニュースリスト */
-/* 編集する場合はnewsListの中身を変更してください */
-const newsList = [
-  { date: '2023/03/31', title: '研究室について'},
-  { date: '2023/03/31', title: 'メンバー' },
-  { date: '2023/03/31', title: '研究成果' }
-];
+/* 記事表示 */
+const props = defineProps({
+  max: {
+    type: Number,
+    default: 3, // 最大表示数を設定
+  }
+});
+
+const limitedContent = await queryContent('').sort({ date: -1 }).limit(props.max).find();
+
+/* 日付を取得 */
+const getDate = (date: string) => {
+  date = date.replace('/news/', '');
+  
+  const year = date.slice(0, 4);
+  const month = date.slice(4, 6);
+  const day = date.slice(6, 8);
+  const result = `${year}/${month}/${day}`;
+
+  return result;
+};
 </script>
 
 
@@ -173,6 +192,10 @@ const newsList = [
     @include md {
       width: 30%;
     }
+  }
+  .news-title {
+    text-decoration: underline;
+    font-weight: bold;
   }
 }
 </style>

@@ -21,15 +21,19 @@
               <!-- 区切り線 -->
               <v-divider class="pa-4"></v-divider>
 
-              <!-- ニュースアイテム -->
-              <v-row v-for="(news) in newsList" :key="news.title">
-                <v-col cols="12" class="py-0">
-                  <v-card flat href="#">
-                    <v-card-subtitle class="pt-2 text-primary" style="font-weight: bold; opacity: 1;">{{ news.date }}</v-card-subtitle>
-                    <v-card-title class="text-subtitle-1">{{ news.title }}</v-card-title>
-                  </v-card>
-                </v-col>
-              </v-row>
+              <!-- ニュース一覧 -->
+              <ContentList v-slot="{ list }">
+                <v-row v-for="article in props.max === -1 ? list.slice().reverse() : limitedContent" :key="article._path">
+                  <v-col cols="12" class="py-0">
+                    <v-card flat :href="article._path">
+                      <v-card-subtitle class="pt-2 text-primary" style="font-weight: bold; opacity: 1;">
+                        {{ getDate(article._path) }}
+                      </v-card-subtitle>
+                      <v-card-title class="news-title text-subtitle-1">{{ article.body.children[0].props.id }}</v-card-title>
+                    </v-card>
+                  </v-col>
+                </v-row>
+              </ContentList>
 
             </v-container>
           </v-card>
@@ -41,19 +45,34 @@
 
 
 <script setup lang="ts">
+import { queryContent } from '#imports';
 
 /* head設定 */
 useHead({
   title: 'ニュース | 佐々木研究室',
 });
 
-/* ニュースリスト */
-/* 編集する場合はnewsListの中身を変更してください */
-const newsList = [
-  { date: '2023/03/31', title: '研究室について'},
-  { date: '2023/03/31', title: 'メンバー' },
-  { date: '2023/03/31', title: '研究成果' }
-];
+/* 記事表示 */
+const props = defineProps({
+  max: {
+    type: Number,
+    default: -1, // 最大表示数を設定
+  }
+});
+
+const limitedContent = await queryContent('').sort({ date: -1 }).limit(props.max).find();
+
+/* 日付を取得 */
+const getDate = (date: string) => {
+  date = date.replace('/news/', '');
+  
+  const year = date.slice(0, 4);
+  const month = date.slice(4, 6);
+  const day = date.slice(6, 8);
+  const result = `${year}/${month}/${day}`;
+
+  return result;
+};
 </script>
 
 
@@ -77,6 +96,7 @@ const newsList = [
 
 // メインビジュアルを背景にする
 .v-main {
+  min-height: 100vh;
   position: relative;
 }
 .main_visual {
@@ -95,6 +115,7 @@ const newsList = [
 
   .news-inner {
     padding: 0;
+    min-height: 500px;
 
     @include pc {
       padding: 50px 30px;
@@ -106,6 +127,10 @@ const newsList = [
       @include pc {
         font-size: 1.5em;
       }
+    }
+    .news-title {
+      text-decoration: underline;
+      font-weight: bold;
     }
   }
 }
