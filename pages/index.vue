@@ -1,3 +1,43 @@
+<script setup lang="ts">
+import { queryContent } from '#imports';
+
+/* head設定 */
+useHead({
+  title: '佐々木研究室 | 福島高専',
+});
+
+/* メインコンテンツリスト */
+/* 編集する場合はmainContentListの中身を変更してください */
+const mainContentList = [
+  { title: 'メンバー', icon: 'mdi-account-group', url: '/member' },
+  { title: '研究成果', icon: 'mdi-trophy', url: '/research' },
+  { title: 'アクセス', icon: 'mdi-map-marker', url: '/access' },
+];
+
+/* 記事表示 */
+const props = defineProps({
+  max: {
+    type: Number,
+    default: 3, // 最大表示数を設定
+  }
+});
+
+const limitedContent = await queryContent('').sort({ date: -1 }).limit(props.max).find();
+
+/* 日付を取得 */
+const getDate = (date: string) => {
+  date = date.replace('/news/', '');
+  
+  const year = date.slice(0, 4);
+  const month = date.slice(4, 6);
+  const day = date.slice(6, 8);
+  const result = `${year}/${month}/${day}`;
+
+  return result;
+};
+</script>
+
+
 <template>
 
   <!-- ローディング -->
@@ -64,7 +104,7 @@
               </ContentList>
 
               <!-- 「もっと見る」ボタン -->
-              <v-btn class="my-6" height="50" color="primary" href="/news">もっと見る
+              <v-btn class="my-6 mt-10" height="50" color="primary" href="/news">もっと見る
                 <v-icon class="ml-1">mdi-arrow-right</v-icon>
               </v-btn>
             </v-container>
@@ -76,46 +116,6 @@
 
   </v-main>
 </template>
-
-
-<script setup lang="ts">
-import { queryContent } from '#imports';
-
-/* head設定 */
-useHead({
-  title: '佐々木研究室 | 福島高専',
-});
-
-/* メインコンテンツリスト */
-/* 編集する場合はmainContentListの中身を変更してください */
-const mainContentList = [
-  { title: 'メンバー', icon: 'mdi-account-group', url: '/member' },
-  { title: '研究成果', icon: 'mdi-trophy', url: '/research' },
-  { title: 'アクセス', icon: 'mdi-map-marker', url: '/access' },
-];
-
-/* 記事表示 */
-const props = defineProps({
-  max: {
-    type: Number,
-    default: 3, // 最大表示数を設定
-  }
-});
-
-const limitedContent = await queryContent('').sort({ date: -1 }).limit(props.max).find();
-
-/* 日付を取得 */
-const getDate = (date: string) => {
-  date = date.replace('/news/', '');
-  
-  const year = date.slice(0, 4);
-  const month = date.slice(4, 6);
-  const day = date.slice(6, 8);
-  const result = `${year}/${month}/${day}`;
-
-  return result;
-};
-</script>
 
 
 <style lang="scss" scoped>

@@ -1,3 +1,24 @@
+<script setup lang="ts">
+
+/* head設定 */
+useHead({
+  title: 'メンバー | 佐々木研究室',
+});
+
+/* メンバーリスト */
+/* 編集する場合はteacherList，studentListの中身を変更してください */
+const teacherList = [
+  { title: '助教', name: '佐々木 修平' }
+];
+const studentList = [
+  { title: '5年生', name: '高専 太郎' },
+  { title: '5年生', name: '高専 花子' },
+  { title: '5年生', name: '高専 太郎' },
+  { title: '5年生', name: '高専 花子' }
+];
+</script>
+
+
 <template>
 
   <!-- メイン -->
@@ -59,27 +80,6 @@
     </v-container>
   </v-main>
 </template>
-
-
-<script setup lang="ts">
-
-/* head設定 */
-useHead({
-  title: 'メンバー | 佐々木研究室',
-});
-
-/* メンバーリスト */
-/* 編集する場合はteacherList，studentListの中身を変更してください */
-const teacherList = [
-  { title: '助教', name: '佐々木 修平' }
-];
-const studentList = [
-  { title: '5年生', name: '高専 太郎' },
-  { title: '5年生', name: '高専 花子' },
-  { title: '5年生', name: '高専 太郎' },
-  { title: '5年生', name: '高専 花子' }
-];
-</script>
 
 
 <style lang="scss" scoped>

@@ -1,3 +1,21 @@
+<script setup lang="ts">
+
+/* head設定 */
+useHead({
+  title: '過去のメンバー | 佐々木研究室',
+});
+
+/* メンバーリスト */
+/* 編集する場合はstudentListの中身を変更してください */
+const studentList = [
+  { title: '2023年3月 卒業', name: '岸本 篤' },
+  { title: '2023年3月 卒業', name: '中本 怜恩' },
+  { title: '2023年3月 卒業', name: '松本 蒼矢' },
+  { title: '2023年3月 卒業', name: 'GOH PEI JIN' }
+];
+</script>
+
+
 <template>
 
   <!-- メイン -->
@@ -41,24 +59,6 @@
     </v-container>
   </v-main>
 </template>
-
-
-<script setup lang="ts">
-
-/* head設定 */
-useHead({
-  title: '過去のメンバー | 佐々木研究室',
-});
-
-/* メンバーリスト */
-/* 編集する場合はstudentListの中身を変更してください */
-const studentList = [
-  { title: '2023年3月 卒業', name: '岸本 篤' },
-  { title: '2023年3月 卒業', name: '中本 怜恩' },
-  { title: '2023年3月 卒業', name: '松本 蒼矢' },
-  { title: '2023年3月 卒業', name: 'GOH PEI JIN' }
-];
-</script>
 
 
 <style lang="scss" scoped>

@@ -1,3 +1,35 @@
+<script setup lang="ts">
+import { queryContent } from '#imports';
+
+/* head設定 */
+useHead({
+  title: 'ニュース | 佐々木研究室',
+});
+
+/* 記事表示 */
+const props = defineProps({
+  max: {
+    type: Number,
+    default: -1, // 最大表示数を設定
+  }
+});
+
+const limitedContent = await queryContent('').sort({ date: -1 }).limit(props.max).find();
+
+/* 日付を取得 */
+const getDate = (date: string) => {
+  date = date.replace('/news/', '');
+  
+  const year = date.slice(0, 4);
+  const month = date.slice(4, 6);
+  const day = date.slice(6, 8);
+  const result = `${year}/${month}/${day}`;
+
+  return result;
+};
+</script>
+
+
 <template>
 
   <!-- メイン -->
@@ -42,38 +74,6 @@
     </v-container>
   </v-main>
 </template>
-
-
-<script setup lang="ts">
-import { queryContent } from '#imports';
-
-/* head設定 */
-useHead({
-  title: 'ニュース | 佐々木研究室',
-});
-
-/* 記事表示 */
-const props = defineProps({
-  max: {
-    type: Number,
-    default: -1, // 最大表示数を設定
-  }
-});
-
-const limitedContent = await queryContent('').sort({ date: -1 }).limit(props.max).find();
-
-/* 日付を取得 */
-const getDate = (date: string) => {
-  date = date.replace('/news/', '');
-  
-  const year = date.slice(0, 4);
-  const month = date.slice(4, 6);
-  const day = date.slice(6, 8);
-  const result = `${year}/${month}/${day}`;
-
-  return result;
-};
-</script>
 
 
 <style lang="scss" scoped>

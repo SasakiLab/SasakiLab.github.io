@@ -1,3 +1,12 @@
+<script setup lang="ts">
+
+/* head設定 */
+useHead({
+  title: 'ニュース | 佐々木研究室',
+});
+</script>
+
+
 <template>
 
   <!-- メイン -->
@@ -22,15 +31,6 @@
     </v-container>
   </v-main>
 </template>
-
-
-<script setup lang="ts">
-
-/* head設定 */
-useHead({
-  title: 'ニュース | 佐々木研究室',
-});
-</script>
 
 
 <style lang="scss" scoped>
