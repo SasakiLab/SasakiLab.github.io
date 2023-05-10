@@ -20,7 +20,7 @@
     <!-- ロゴ -->
     <v-toolbar-title>
       <v-btn height="100%" :ripple="false" class="pa-0" href="/">
-        <v-img :width="logoWidth" height="60" src="/images/title.png"></v-img>
+        <v-img :width="logoWidth" height="60" src="/images/title.webp"></v-img>
       </v-btn>
     </v-toolbar-title>
 
