@@ -54,7 +54,7 @@ const getDate = (date: string) => {
           <v-card class="about">
 
             <!-- コンテナ：研究室紹介 -->
-            <v-container>
+            <v-container class="about-inner">
 
               <!-- 研究室キャッチコピー -->
               <v-card-title class="py-6 text-primary" style="font-weight: bold;">未来を支える超電導技術の研究</v-card-title>
@@ -161,7 +161,14 @@ const getDate = (date: string) => {
   @include pc {
     padding: 50px 30px;
   }
-  
+
+  &-inner {
+    padding: 5px;
+
+    @include pc {
+      padding: 16px;
+    }
+  }
   .v-card-title {
     font-size: 1.3em;
 
@@ -175,6 +182,7 @@ const getDate = (date: string) => {
 
     p {
       padding: 0;
+      text-align: justify;
     }
   }
 }

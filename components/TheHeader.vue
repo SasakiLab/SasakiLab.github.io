@@ -62,7 +62,7 @@
     return display.smAndDown.value ? "px-0" : "px-4"; // モバイル:"px-0", ディスクトップ:"px-4"
   });
   const logoWidth = computed(() => {
-    return display.smAndDown.value ? 180 : 200; // モバイル:180px, ディスクトップ:200px
+    return display.smAndDown.value ? 150 : 200; // モバイル:180px, ディスクトップ:200px
   });
 </script>
 
