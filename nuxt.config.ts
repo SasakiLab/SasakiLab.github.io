@@ -12,6 +12,8 @@ export default defineNuxtConfig({
   modules: [
     "@nuxt/content"
   ],
+  target: 'static',
+  ssr: false,
   app: {
     head: {
       charset: 'utf-16',
