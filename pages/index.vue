@@ -21,7 +21,7 @@ const props = defineProps({
   }
 });
 
-// const limitedContent = await queryContent('').sort({ date: -1 }).limit(props.max).find();
+const limitedContent = await queryContent('').sort({ date: -1 }).limit(props.max).find();
 
 /* 日付を取得 */
 const getDate = (date: string) => {
