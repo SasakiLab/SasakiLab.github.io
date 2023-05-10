@@ -13,7 +13,7 @@ export default defineNuxtConfig({
     "@nuxt/content"
   ],
   target: 'static',
-  ssr: false,
+  ssr: true,
   app: {
     head: {
       charset: 'utf-16',
