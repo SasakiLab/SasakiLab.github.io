@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { queryContent } from '#imports';
 
 /* head設定 */
 useHead({
