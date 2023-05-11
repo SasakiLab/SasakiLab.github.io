@@ -1,45 +1,32 @@
 # SasakiLab.github.io
-Web site
 
-## Nuxt 3 Minimal Starter
+![header](./public/images/header.png)
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## 概要
 
-### Setup
+福島工業高等専門学校 電気電子システム工学科<br>
+佐々木研究室のWebサイトです。
 
-Make sure to install the dependencies:
+https://sasakilab.github.io/
 
-```bash
-# yarn
-yarn install
 
-# npm
-npm install
+## 管理者向け内容
 
-# pnpm
-pnpm install
-```
+### 新規ニュースの作成方法
 
-### Development Server
+1. [このページ](https://github.com/SasakiLab/SasakiLab.github.io)で`.`キーを押す。
+2. `content\news`内の記事を複製する。
+3. `F2`キーを押してファイル名を`yyyymmdd`に変更する。
+4. `Ctrl`+`K`の後に`V`キーを押してプレビューを表示する。
+5. プレビューを見ながらファイルの中身を適切に変更する。
+6. 左側にある`ソース管理`を選択し、メッセージを入力して`コミットとプッシュ`を押す。
 
-Start the development server on http://localhost:3000
+### その他
 
-```bash
-npm run dev
-```
+- 画像： `public\images`内に追加
+- ショートカット一覧を表示： `Ctrl`+`K`の後に`Ctrl`+`S`キー
+- Markdownの書き方： [Markdown記法 チートシート](https://qiita.com/Qiita/items/c686397e4a0f4f11683d)
 
-### Production
+## 注意
 
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+当サイトの内容、テキスト、画像等の無断転載・無断使用を固く禁じます。
