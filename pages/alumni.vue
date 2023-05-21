@@ -11,7 +11,7 @@ const studentList = [
   { title: '2023年3月 卒業', name: '岸本 篤' },
   { title: '2023年3月 卒業', name: '中本 怜恩' },
   { title: '2023年3月 卒業', name: '松本 蒼矢' },
-  { title: '2023年3月 卒業', name: 'GOH PEI JIN' }
+  { title: '', name: 'その他 1名' }
 ];
 </script>
 
