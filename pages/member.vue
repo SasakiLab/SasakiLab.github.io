@@ -8,7 +8,7 @@ useHead({
 /* メンバーリスト */
 /* 編集する場合はteacherList，studentListの中身を変更してください */
 const teacherList = [
-  { title: '助教', name: '佐々木 修平' }
+  { title: '准教授', name: '佐々木 修平' }
 ];
 const studentList = [
   { title: '5年生', name: '高専 太郎' },
