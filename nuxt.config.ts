@@ -26,6 +26,7 @@ export default defineNuxtConfig({
         { property: 'og:url', content: 'https://sasakilab.github.io/' },
         { property: 'og:image', content: '/images/ogp.png' },
         { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'google-site-verification', content: 'aizMJvTwm3-XaQD1SqFIrbLtIT3RFaevs2QyiJbbaNs' },
       ],
       link: [
         { rel: "icon", type: "image/webp", href: "/images/icon.webp" },
